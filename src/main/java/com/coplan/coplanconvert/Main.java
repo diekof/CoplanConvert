@@ -205,6 +205,7 @@ public class Main {
         
         CoplanConvert.isEsconderCabRod = false;
         CoplanConvert.isEsconderCab = true;
+        CoplanConvert.isPaisagem = true;
         CoplanConvert.Stringtopdf(html, caminhoPdf);
         
         System.out.println("Clique em qualquer coisa para finalizar");
