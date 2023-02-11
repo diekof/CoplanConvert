@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package com.coplan.coplanconvert;
-
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
@@ -80,11 +75,13 @@ public static String CaminhoImagem = "";
   public static String htmlCabecalho = "";  
   public static String htmlRodape = "";  
   public static String caminhoFont = "";  
+  
   public static float marginTop = 50.0F;  
   public static float marginBottom = 30.0F;  
   public static float marginRight = 30.0F;  
   public static float marginLeft = 30.0F;  
   public static float marginTopCab = 30.0F;  
+  
   public static Boolean isMarginInformada = false;  
   public static Boolean isEsconderCabRod = false;  
   public static Boolean isEsconderCab = false;  
@@ -141,28 +138,17 @@ public static String CaminhoImagem = "";
     private void addHeaderHtml(PdfWriter paramPdfWriter, Document paramDocument) {
       if (CoplanConvert.htmlCabecalho.length() > 0)
         try {
-          
-          int x1 = (int)((CoplanConvert.isPaisagem == true) ? 36 : 36);//36;
-          int x2 = (int)((CoplanConvert.isPaisagem == true) ? (paramDocument.getPageSize().getWidth() - (CoplanConvert.marginLeft + CoplanConvert.marginRight)) : 529);//559;
+          int x1 = (int)(CoplanConvert.marginLeft);//36;
+          int x2 = (int)((paramDocument.getPageSize().getWidth() - CoplanConvert.marginLeft));//559;
           int y1 = (int)(paramDocument.getPageSize().getHeight() - CoplanConvert.marginTopCab);
-          int y2 = (int)((CoplanConvert.isMarginInformada == true && CoplanConvert.marginTop > 30.0F) ? (700.0F - CoplanConvert.marginTop - 30.0F) : 700.0F);
-          
-          System.out.println(paramDocument.getPageSize().getHeight());
-          System.out.println(paramDocument.getPageSize().getWidth());
-          
-          System.out.println(x1);
-          System.out.println(x2);
-          System.out.println(y1);
-          System.out.println(y2);
+          int y2 = 0; //por algum motivo 0 é o que da certo
+          //int y2 = (int)((CoplanConvert.isMarginInformada == true && CoplanConvert.marginTop > 30.0F) ? (700.0F - CoplanConvert.marginTop - 30.0F) : 700.0F);
           
           ColumnText ct = new ColumnText(paramPdfWriter.getDirectContent());
-          //ct.setSimpleColumn(new Rectangle(x1, y1, x2, y2));
-          if(CoplanConvert.isPaisagem == true){
-              ct.setSimpleColumn(new Rectangle(CoplanConvert.marginLeft,550.0f,812.0f,0f));
-          }else{
-             ct.setSimpleColumn(new Rectangle(CoplanConvert.marginLeft, y1, x2, y2));
-          }
-            
+          //Parametros RECTANGLE -> ct.setSimpleColumn(new Rectangle( x1, y1, x2, y2));
+          //Parametros RECTANGLE -> ct.setSimpleColumn(new Rectangle( posX, posY, width, height));
+          ct.setSimpleColumn(new Rectangle(x1,y1,x2,y2));
+          
           for (Element e : this.header)
             ct.addElement(e); 
           ct.go();
@@ -221,11 +207,26 @@ public static String CaminhoImagem = "";
       if (CoplanConvert.htmlRodape.length() > 0)
         try {
           ColumnText ct = new ColumnText(paramPdfWriter.getDirectContent());
-          int x1 = 36;
-          int x2 = 559;
-          int y1 = (int)((CoplanConvert.isMarginInformada == true && CoplanConvert.marginBottom > 30.0F) ? CoplanConvert.marginBottom : 30.0F);
+          int x1 = (int)(CoplanConvert.marginLeft);//36;
+          int x2 = (int)((paramDocument.getPageSize().getWidth() - CoplanConvert.marginLeft));//559;
+          int y1 = (int) CoplanConvert.marginBottom;
           int y2 = 0;
+          
+          //int x1 = 36;
+          //int x2 = 559;
+          //int y1 = (int)((CoplanConvert.isMarginInformada == true && CoplanConvert.marginBottom > 30.0F) ? CoplanConvert.marginBottom : 30.0F);
+          //int y2 = 0;
+          
+          //System.out.println("x1:"+x1);
+          //System.out.println("y1:"+y1);
+          //System.out.println("x2:"+x2);
+          //System.out.println("y2:"+y2);
+          
+          //Parametros RECTANGLE -> ct.setSimpleColumn(new Rectangle( x1, y1, x2, y2));
+          //Parametros RECTANGLE -> ct.setSimpleColumn(new Rectangle( posX, posY, width, height));
           ct.setSimpleColumn(new Rectangle(x1, y1, x2, y2));
+          
+         
           ElementList f = this.footer;
           if (CoplanConvert.htmlRodape.contains("#PAGINA_ATUAL#"))
             f = CoplanConvert.parseToElementList(CoplanConvert.htmlRodape.replace("#PAGINA_ATUAL#", String.valueOf(paramPdfWriter.getPageNumber())), CoplanConvert.caminhoCss); 
