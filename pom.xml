@@ -3,11 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.coplan</groupId>
     <artifactId>CoplanConvert</artifactId>
-<<<<<<< HEAD
     <version>02.2023.001</version>
-=======
-    <version>1.1</version>
->>>>>>> 6a1511e9ab545af6c6a2caa21e92d42c8cf1574e
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

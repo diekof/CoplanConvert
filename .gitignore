@@ -1,1 +1,4 @@
 /target
+target/classes/com/coplan/coplanconvert/CoplanConvert.class
+target/classes/*
+target/
