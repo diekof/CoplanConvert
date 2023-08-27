@@ -4,15 +4,16 @@ import org.junit.jupiter.api.Test;
 public class CoplanConvertTest {
     @Test
     public void testStringtopdf() throws Exception {
-        String caminhoPdf = "c:\\temp\\pdftestenovo.pdf";
-        String caminhoPdfWatermark = "c:\\temp\\pdfteste_watermark.pdf";
+        String caminhoPdf = "//Users//aelsonmartins//Desktop//pdftestenovo.pdf";
+        String caminhoPdfWatermark = "";
 
-        CoplanConvert.isEsconderCabRod = false;
-        CoplanConvert.isEsconderCab = false;
+        CoplanConvert.isEsconderCabRod = true;
+        CoplanConvert.isEsconderCab = true;
+        CoplanConvert.isEsconderRod = false;
         CoplanConvert.isPaisagem = true;
         CoplanConvert.isMarginInformada = false;
-        CoplanConvert.isRodapeHtml = true;
-        CoplanConvert.isCabecalhoHtml = true;
+        CoplanConvert.isRodapeHtml = false;
+        CoplanConvert.isCabecalhoHtml = false;
 
         Boolean isPaisagem = true;
         Boolean isEsconderCabRod = false;

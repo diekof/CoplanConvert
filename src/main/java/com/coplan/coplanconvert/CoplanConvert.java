@@ -308,7 +308,7 @@ public static String CaminhoImagem = "";
         if (isMarginInformada == true) {
           localDocument = new Document(PageSize.A4.rotate(), marginLeft, marginRight, marginTop, marginBottom);
         } else {
-          localDocument = new Document(PageSize.A4.rotate(), 30.0F, 30.0F, 115.0F, 30.0F);
+          localDocument = new Document(PageSize.A4.rotate(), 30.0F, 30.0F, 30.0F, 30.0F);
         } 
       } else if (isMarginInformada == true) {
         localDocument = new Document(PageSize.A4, marginLeft, marginRight, marginTop, marginBottom);
